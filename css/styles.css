@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
 body {
     position: relative;
+    font-family: Nunito, serif;
+    background-color: rgb(250, 250, 250);
+    
 }
 
 .overlay {
@@ -12,7 +22,7 @@ body {
 }
 
 .modal {
-    width: 375px;
+    width: 320px;
     margin: 15% auto auto;
     position: relative;
     text-align: center;
@@ -31,4 +41,100 @@ body {
 
 .hidden {
     display: none;
+}
+
+/*===========================================
+    CARD STYLES
+============================================*/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: auto;
+    grid-gap: 30px;
+    justify-content: center;
+}
+
+.card {
+    border: 3px solid rgb(224, 224, 224);
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #fff;
+}
+
+img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 10px;
+}
+
+h1,
+h2 {
+    color: rgb(80, 80, 80);
+}
+
+h2 {
+    font-size: 18px;
+}
+
+.text-container,
+.card p {
+    color: rgb(168, 168, 168);
+    font-size: 14px;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+hr {
+    margin: 30px 0;
+}
+
+.text-container p {
+    padding: 5px 0;;
+}
+
+.modal img {
+    height: 150px;
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.modal h2 {
+    font-size: 24px;
+}
+
+@media (min-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+        margin: 20px;
+    }
+
+    .modal {
+        width: 375px;
+    }
+}
+
+
+@media (min-width: 1024px) {
+
+    .grid-container {
+        grid-template-columns: 1fr 1fr 1fr;
+        max-width: 1000px;
+        margin: auto;
+        justify-content: center;
+    }
 }
