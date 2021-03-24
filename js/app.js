@@ -4,6 +4,9 @@ const gridContainer = document.querySelector(".grid-container");
 const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
+const searchBar = document.getElementById("search");
+const modalLeft = document.querySelector(".modal-left");
+const modalRight = document.querySelector(".modal-right");
 
 fetch(urlAPI) //fetches data from urlAPI website
     .then(res => res.json()) //formats response as JSON
@@ -32,12 +35,10 @@ function displayEmployees(employeeData) {
             </div> 
         `
     });
-
     gridContainer.innerHTML = employeeHTML;
 };
 
 function displayModal(index) {
-
     let {name, dob, phone, email, location: {city, street, state, postcode}, picture } = employees[index];
     let date = new Date(dob.date);
     const modalHTML = `
@@ -61,7 +62,6 @@ gridContainer.addEventListener('click', e => {
     if (e.target !== gridContainer) {
         const card = e.target.closest(".card");
         const index = card.getAttribute("data-index");
-
         displayModal(index);
     }
 });
@@ -69,3 +69,26 @@ gridContainer.addEventListener('click', e => {
 modalClose.addEventListener("click", () => {
     overlay.classList.add("hidden");
 });
+
+searchBar.addEventListener("keyup", (e) => {
+    let searchString = searchBar.value.toLowerCase(); //gets value of what user types in search bar
+    let card = document.querySelectorAll(".card"); //targets the employee cards 
+    card.forEach(employee=> {
+        let name = employee.querySelector('.name').textContent.toLowerCase();
+        if (name.includes(searchString)){
+            employee.style.display="";
+        }
+        else {
+            employee.style.display="none";
+        }
+    }); 
+});
+
+modalLeft.addEventListener("click", (e) => {
+    let btn = e.target;
+    if (btn.classList.contains(".modal-left")){
+        card(1);
+    } else if (btn.classList.contains(".modal-right")) {
+        card(-1);
+    }
+})
