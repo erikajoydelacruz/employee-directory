@@ -8,12 +8,62 @@
 body {
     position: relative;
     font-family: Nunito, serif;
-    background-color: rgb(250, 250, 250);
+    background-color: rgb(247, 251, 255);
     
 }
 
+/*===========================================
+   BASE STYLES
+============================================*/
+
+img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+
+}
+
+h1,
+h2 {
+    color: rgb(83, 111, 138);
+}
+
+h2 {
+    font-size: 18px;
+}
+
+hr {
+    margin: 30px 0;
+    color: rgb(83, 111, 138);
+
+}
+
+header {
+    display: flex;
+    flex-direction:  column;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: auto;
+    grid-gap: 30px;
+    justify-content: center;
+}
+
+/*===========================================
+   MODAL
+============================================*/
 .overlay {
-    position: absolute; 
+    position: fixed; 
     top: 0;
     left: 0;
     right: 0;
@@ -36,75 +86,19 @@ body {
     position: absolute;
     right: 15px;
     top: 5px;
+    font-family: Nunito;
+}
+
+.modal-left:hover,
+.modal-right:hover,
+.modal-close:hover {
     cursor: pointer;
+    transition: color;
+    color: rgb(108, 146, 182);
 }
 
 .hidden {
     display: none;
-}
-
-/*===========================================
-    CARD STYLES
-============================================*/
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: auto;
-    grid-gap: 30px;
-    justify-content: center;
-}
-
-.card {
-    border: 3px solid rgb(224, 224, 224);
-    border-radius: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 20px;
-    background-color: #fff;
-}
-
-img {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin-right: 15px;
-}
-
-h1 {
-    text-transform: uppercase;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    padding: 10px;
-}
-
-h1,
-h2 {
-    color: rgb(80, 80, 80);
-}
-
-h2 {
-    font-size: 18px;
-}
-
-.text-container,
-.card p {
-    color: rgb(168, 168, 168);
-    font-size: 14px;
-}
-
-.card:hover {
-    cursor: pointer;
-}
-
-hr {
-    margin: 30px 0;
-}
-
-.text-container p {
-    padding: 5px 0;;
 }
 
 .modal img {
@@ -117,6 +111,80 @@ hr {
     font-size: 24px;
 }
 
+.modal-close,
+.modal-left,
+.modal-right {
+    background-color: transparent;
+    border: 0;
+    font-size: 24px;
+    color: rgb(83, 111, 138);
+}
+
+.modal-left,
+.modal-right {
+    margin-bottom: 20px;
+}
+
+.modal-left {
+    margin-right: 10px;
+}
+
+.modal-right {
+    margin-left: 10px;
+}
+/*===========================================
+   SEARCH
+============================================*/
+
+#search {
+    width: 250px;
+    height: 40px;
+    justify-self: center;
+    margin: 20px 0;
+    border-radius: 7px;
+    border: 2px solid rgb(231, 231, 231);
+}
+
+#search::placeholder {
+    font-family: Nunito;
+    color:rgb(197, 197, 197)
+}
+
+/*===========================================
+   CARD
+============================================*/
+
+.card {
+    border: 3px solid rgb(231, 231, 231);
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    background-color: #fff;
+}
+
+.text-container,
+.card p {
+    color: rgb(173, 184, 196);
+    font-size: 14px;
+}
+
+.card:hover {
+    cursor: pointer;
+    border-color: rgb(108, 146, 182);
+    transition: border-color .1s ease-in;
+    
+}
+
+.text-container p {
+    padding: 5px 0;;
+}
+
+/*===========================================
+   MEDIA QUERIES
+============================================*/
+
 @media (min-width: 768px) {
     .grid-container {
         grid-template-columns: 1fr 1fr;
@@ -126,15 +194,30 @@ hr {
     .modal {
         width: 375px;
     }
-}
 
+    h1 {
+        margin: 30px 0 20px 0;
+    }
+
+    header {
+        flex-direction: row;
+    }
+
+    #search {
+        width: 300px;
+    }
+}
 
 @media (min-width: 1024px) {
 
     .grid-container {
         grid-template-columns: 1fr 1fr 1fr;
         max-width: 1000px;
-        margin: auto;
         justify-content: center;
+        margin: auto;
+    }
+
+    #search {
+        width: 400px;
     }
 }
