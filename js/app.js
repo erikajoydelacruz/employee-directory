@@ -84,11 +84,24 @@ searchBar.addEventListener("keyup", (e) => {
     }); 
 });
 
-modalLeft.addEventListener("click", (e) => {
-    let btn = e.target;
-    if (btn.classList.contains(".modal-left")){
-        card(1);
-    } else if (btn.classList.contains(".modal-right")) {
-        card(-1);
+let currentItem; 
+
+modalRight.addEventListener("click", () => {
+
+    if (currentItem <= employees.length) {
+        currentItem++;
+    } else {
+        currentItem = 0
     }
-})
+    displayModal(currentItem);
+});
+
+modalLeft.addEventListener("click", () => {
+    if (currentItem > 0){
+        currentItem--;
+    } else {
+        currentItem = 11;
+    }
+    displayModal(currentItem);
+});
+
