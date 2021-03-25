@@ -84,24 +84,20 @@ searchBar.addEventListener("keyup", (e) => {
     }); 
 });
 
-let currentItem; 
+let currentItem = 0; 
 
-modalRight.addEventListener("click", () => {
-
-    if (currentItem <= employees.length) {
-        currentItem++;
-    } else {
-        currentItem = 0
-    }
-    displayModal(currentItem);
+modalRight.addEventListener("click", function () {
+  currentItem++;
+  if (currentItem > employees.length - 1) {
+    currentItem = 0;
+  }
+  displayModal(currentItem);
 });
-
-modalLeft.addEventListener("click", () => {
-    if (currentItem > 0){
-        currentItem--;
-    } else {
-        currentItem = 11;
-    }
-    displayModal(currentItem);
+// show prev person
+modalLeft.addEventListener("click", function () {
+  currentItem--;
+  if (currentItem < 0) {
+    currentItem = employees.length - 1;
+  }
+  displayModal(currentItem);
 });
-
